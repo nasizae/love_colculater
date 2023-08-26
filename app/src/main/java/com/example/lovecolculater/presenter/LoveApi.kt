@@ -1,4 +1,4 @@
-package com.example.lovecolculater.api
+package com.example.lovecolculater.presenter
 
 import com.example.lovecolculater.model.Love
 import retrofit2.Call

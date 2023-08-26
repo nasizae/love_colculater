@@ -11,22 +11,25 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.lovecolculater.databinding.FragmentFirstBinding
 import com.example.lovecolculater.model.Love
+import com.example.lovecolculater.presenter.FirstPresenter
 import com.example.lovecolculater.service.RetrofitService
+import com.example.lovecolculater.view.FirstView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(),FirstView.View {
 
     private lateinit var binding: FragmentFirstBinding
-    private lateinit var bundle: Bundle
+    private lateinit var presenter: FirstView.Presenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentFirstBinding.inflate(layoutInflater)
+        presenter = FirstPresenter(this)
         return binding.root
     }
 
@@ -35,29 +38,21 @@ class FirstFragment : Fragment() {
         initClicker()
     }
 
-    private fun initClicker() {
-        with(binding) {
-            btnCalculate.setOnClickListener {
-                RetrofitService().api.calculateMatching(
-                    etYou.text.toString(),
-                    etMe.text.toString()
-                ).enqueue(object : Callback<Love> {
 
-                    override fun onResponse(call: Call<Love>, response: Response<Love>) {
-                        Log.e("ololo", "OnResponse: ${response.body()}")
-                        findNavController().navigate(
-                            R.id.resultFragment,
-                            bundleOf("love" to response.body())
-                        )
-                    }
-
-                    override fun onFailure(call: Call<Love>, t: Throwable) {
-                        Log.e("ololo", "OnFailure: ${t.message}")
-                    }
-
-                })
-            }
-
+   override fun initClicker() {
+        binding.btnCalculate.setOnClickListener {
+            presenter.calculateMatching(
+                binding.etYou.text.toString(),
+                binding.etMe.text.toString()
+            )
         }
+    }
+
+  override  fun showResult(loveModel: Love?) {
+        findNavController().navigate(R.id.resultFragment, bundleOf("love" to loveModel))
+    }
+
+   override fun showError(message: String) {
+        Log.e("ololo", "Error:$message")
     }
 }
