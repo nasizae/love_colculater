@@ -24,9 +24,9 @@ class ResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loveModel = this.arguments?.getSerializable("love") as Love // получаем данные
+        loveModel = this.arguments?.getSerializable("love") as Love
         binding.tvFirst.text = loveModel.firstname
-        binding.tvSecond.text = loveModel.secondName                   // присваиваем к TextView
+        binding.tvSecond.text = loveModel.secondName
         binding.tvProcent.text = loveModel.percentage
         binding.tvMassage.text = loveModel.result
         binding.btnTryAgane.setOnClickListener {

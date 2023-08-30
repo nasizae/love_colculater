@@ -5,7 +5,7 @@ import com.example.lovecolculater.model.Love
 
 interface ResultView {
     interface View {
-        fun displayLoveModel(loveModel: Love)
+        fun displayLoveModel(loveModel: Love?)
         fun navigateToMainFragment()
     }
 
