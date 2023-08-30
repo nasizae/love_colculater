@@ -25,11 +25,9 @@ class HistoryFragment : Fragment() {
 
     private fun setupUI() {
         with(binding){
-            var list = App.appDataBase.loveDao().getAll()
+            var list = App.appDataBase.loveDao().getAllSort()
             list.forEach{
-                tvFirst.append("\n${it.firstname}\n")
-                tvSecond.append("\n${it.secondName}\n")
-                tvProcent.append("\n${it.percentage}\n")
+             tvHistory.append("\n${it.firstname}\n${it.secondName}\n${it.percentage}\n${it.result}\n")
             }
         }
 
