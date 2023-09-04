@@ -29,6 +29,7 @@ class FirstFragment : Fragment(),FirstView {
     ): View {
         binding = FragmentFirstBinding.inflate(layoutInflater)
         presenter.atachView(this)
+        presenter.showOnBoarding()
         return binding.root
     }
 
@@ -59,5 +60,9 @@ class FirstFragment : Fragment(),FirstView {
 
    override fun showError(message: String) {
         Log.e("ololo", "Error:$message")
+    }
+
+    override fun navigationToOnBoarding() {
+        findNavController().navigate(R.id.onBoardingFragment)
     }
 }

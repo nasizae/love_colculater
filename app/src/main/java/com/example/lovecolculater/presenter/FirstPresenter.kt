@@ -1,6 +1,7 @@
 package com.example.lovecolculater.presenter
 
 import com.example.lovecolculater.model.Love
+import com.example.lovecolculater.pref.Pref
 import com.example.lovecolculater.service.RetrofitService
 import com.example.lovecolculater.view.FirstView
 import dagger.hilt.android.AndroidEntryPoint
@@ -8,10 +9,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
-@AndroidEntryPoint
-class FirstPresenter @Inject constructor(private val api:LoveApi) {
+import javax.inject.Singleton
 
-       private lateinit var firstView:FirstView
+class FirstPresenter @Inject constructor (private val api:LoveApi) {
+
+    private lateinit var firstView:FirstView
+    @Inject
+    lateinit var pref:Pref
      fun calculateMatching(first: String, second: String) {
         api.calculateMatching(first, second).enqueue(object :
             Callback<Love> {
@@ -26,5 +30,9 @@ class FirstPresenter @Inject constructor(private val api:LoveApi) {
     }
     fun atachView(view:FirstView){
         this.firstView=view
+    }
+    fun showOnBoarding(){
+        if (!pref.isOnBoardingShow())
+            firstView.navigationToOnBoarding()
     }
 }

@@ -9,6 +9,7 @@ import dagger.hilt.android.HiltAndroidApp
 class App : Application() {
     companion object {
         lateinit var appDataBase: AppDataBase
+        const val SHOWED_KEY = "seen_key"
     }
 
     override fun onCreate() {

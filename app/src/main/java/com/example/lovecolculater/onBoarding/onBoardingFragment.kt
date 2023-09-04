@@ -20,7 +20,7 @@ class onBoardingFragment : Fragment() {
     private  lateinit var  binding: FragmentOnBoardingBinding
     private var adapter:Adapter= Adapter(this::onClick)
      @Inject
-    internal var pref: Pref=Pref(requireContext())
+    lateinit var pref: Pref
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

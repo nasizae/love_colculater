@@ -11,7 +11,6 @@ import com.example.lovecolculater.model.Love
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-@Suppress ("DEPRECATION")
 class ResultFragment : Fragment() {
 
     private lateinit var binding: FragmentResultBinding

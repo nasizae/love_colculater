@@ -7,4 +7,5 @@ interface FirstView  {
     fun initClicker()
     fun showResult(loveModel: Love?)
     fun showError(message: String)
+    fun navigationToOnBoarding()
 }

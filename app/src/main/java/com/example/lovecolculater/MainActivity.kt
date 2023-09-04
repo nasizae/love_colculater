@@ -11,14 +11,13 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    @Inject
-    internal var pref: Pref= Pref(this)
+//       lateinit var pref: Pref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navController = findNavController(R.id.firstFragment)
-        if (!pref.isOnBoardingShow())
-            navController.navigate(R.id.onBoardingFragment)
+//        val navController = findNavController(R.id.firstFragment)
+//        if (!pref.isOnBoardingShow())
+//            navController.navigate(R.id.onBoardingFragment)
     }
 }
