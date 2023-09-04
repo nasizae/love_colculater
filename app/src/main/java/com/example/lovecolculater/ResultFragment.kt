@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lovecolculater.databinding.FragmentResultBinding
 import com.example.lovecolculater.model.Love
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+@Suppress ("DEPRECATION")
 class ResultFragment : Fragment() {
 
     private lateinit var binding: FragmentResultBinding

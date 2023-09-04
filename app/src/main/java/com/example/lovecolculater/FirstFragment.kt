@@ -7,23 +7,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import com.example.lovecolculater.R
 import androidx.navigation.fragment.findNavController
 import com.example.lovecolculater.databinding.FragmentFirstBinding
 import com.example.lovecolculater.model.Love
 import com.example.lovecolculater.presenter.FirstPresenter
 import com.example.lovecolculater.view.FirstView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class FirstFragment : Fragment(),FirstView.View {
+@AndroidEntryPoint
+class FirstFragment : Fragment(),FirstView {
 
     private lateinit var binding: FragmentFirstBinding
-    private lateinit var presenter: FirstView.Presenter
+    @Inject
+     lateinit var presenter: FirstPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentFirstBinding.inflate(layoutInflater)
-        presenter = FirstPresenter(this)
+        presenter.atachView(this)
         return binding.root
     }
 
