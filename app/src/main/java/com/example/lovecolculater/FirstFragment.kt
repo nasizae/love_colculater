@@ -13,6 +13,7 @@ import com.example.lovecolculater.databinding.FragmentFirstBinding
 import com.example.lovecolculater.model.Love
 import com.example.lovecolculater.presenter.FirstPresenter
 import com.example.lovecolculater.view.FirstView
+import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

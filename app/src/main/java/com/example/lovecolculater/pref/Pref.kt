@@ -11,7 +11,6 @@ import javax.inject.Singleton
 
 class Pref @Inject constructor( private  var preferences : SharedPreferences ) {
 
-
     fun isOnBoardingShow(): Boolean {
         return preferences.getBoolean(SHOWED_KEY, false)
     }
